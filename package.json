@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"gh-pages-deploy",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "gh-pages-deploy",
+    "description": "api documentation for [gh-pages-deploy (v0.4.2)](https://github.com/meandavejustice/gh-pages-deploy) [![npm package](https://img.shields.io/npm/v/npmdoc-gh-pages-deploy.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gh-pages-deploy) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gh-pages-deploy.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gh-pages-deploy)",
     "devDependencies": {
-        "gh-pages-deploy": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "gh-pages-deploy": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-gh-pages-deploy",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-gh-pages-deploy",
+    "keywords": [
+        "documentation",
+        "gh-pages-deploy"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_gh_pages_deploy.js",
+    "name": "npmdoc-gh-pages-deploy",
+    "nameAlias": "npmdoc_gh_pages_deploy",
+    "nameOriginal": "npmdoc-gh-pages-deploy",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-gh-pages-deploy"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
